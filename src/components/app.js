@@ -16,8 +16,21 @@ class App extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log('submit event')
-    console.log(this.state.input)
+    // console.log('submit event')
+    // console.log(this.state.input)
+    this.getLatLong();
+    
+  }
+
+  getLatLong() {
+    fetch('https://api.postcodes.io/postcodes/nw73ex')
+    .then((response) => {
+      console.log(response)
+      return response.json();
+    }).then((response) => {
+      console.log(response.result.latitude);
+      console.log(response.result.longitude);
+    });
   }
 
   render() {

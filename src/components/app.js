@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 
 import Header from './header';
+import Map from './Map'
 
 class App extends Component {
 
@@ -12,6 +13,7 @@ class App extends Component {
         <br />
         <br />
         <p>hello</p>
+        <Map />
       </div>
     );
   }

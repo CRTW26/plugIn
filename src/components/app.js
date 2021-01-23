@@ -1,12 +1,20 @@
-import { h } from 'preact';
-import { Router } from 'preact-router';
+import { h, Component } from 'preact';
 
 import Header from './header';
 
-const App = () => (
-	<div id="app">
-		<Header />
-	</div>
-)
+class App extends Component {
+
+  render() {
+    return(
+      <div>
+        <Header />
+        <br />
+        <br />
+        <br />
+        <p>hello</p>
+      </div>
+    );
+  }
+}
 
 export default App;

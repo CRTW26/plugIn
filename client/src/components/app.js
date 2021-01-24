@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   getLatLong() {
-    fetch('http://localhost:3000/location')
+    fetch('/api/location')
     .then((response) => {
       console.log(response);
       return response.json();

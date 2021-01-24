@@ -7,7 +7,9 @@ import UserInput from './UserInput';
 class App extends Component {
 
   state = {
-    input: 'hello'
+    input: 'hello',
+    lat: null,
+    lng: null
   }
 
   inputHandler = (event) => {
@@ -23,13 +25,16 @@ class App extends Component {
   }
 
   getLatLong() {
-    fetch('https://api.postcodes.io/postcodes/nw73ex')
+    fetch('http://localhost:3000/location')
     .then((response) => {
-      console.log(response)
+      console.log(response);
       return response.json();
     }).then((response) => {
-      console.log(response.result.latitude);
-      console.log(response.result.longitude);
+      console.log(response);
+      this.setState({lat: response.result.latitude})
+      this.setState({lng: response.result.longitude})
+      // console.log(response.result.latitude);
+      // console.log(response.result.longitude);
     });
   }
 
@@ -46,6 +51,8 @@ class App extends Component {
           submitted={(event) => this.submitHandler(event)} 
           inputChanged={(event) => this.inputHandler(event)}/>
         <p>{this.state.input}</p>
+        <p>{this.state.lat}</p>
+        <p>{this.state.lng}</p>
       </div>
     );
   }

@@ -10,7 +10,7 @@ class App extends Component {
     input: 'hello',
     lat: null,
     lng: null,
-    stations: null
+    stations: []
   }
 
   inputHandler = (event) => {
@@ -37,20 +37,19 @@ class App extends Component {
       this.setState({lng: response.result.longitude})
       // console.log(response.result.latitude);
       // console.log(response.result.longitude);
-      // this.getStationData(response.result.latitude, response.result.longitude);
+      this.getStationData(response.result.latitude, response.result.longitude);
     });
   }
 
-  // getStationData(lat, lng) {
-  //   fetch(`https://api.openchargemap.io/v3/poi/?output=json&countrycode=GB&maxresults=20&compact=true&verbose=false&latitude=${lat}&longitude=${lng}&distance=30&distanceunit=km&opendata=true`)
-  //   .then((response) => {
-  //     return response.json();
-  //   }).then((response) => {
-  //     console.log(response);
-  //     this.sortStationData(response);
-  //     // this.setState({stations: response.stations})
-  //   });
-  // }
+  getStationData(lat, lng) {
+    fetch(`api/stations/${lat}/${lng}`)
+    .then((response) => {
+      return response.json();
+    }).then((response) => {
+      console.log(response);
+      this.sortStationData(response);
+    });
+  }
 
   sortStationData(response) {
     console.log(response.length)
@@ -65,6 +64,7 @@ class App extends Component {
       results.push(station)
     }
     console.log(results);
+    this.setState({stations: results})
   }
 
   render() {
@@ -82,7 +82,7 @@ class App extends Component {
         <p>{this.state.input}</p>
         <p>{this.state.lat}</p>
         <p>{this.state.lng}</p>
-        <p>{this.state.stations}</p>
+        <p>{this.state.stations[0]}</p>
       </div>
     );
   }

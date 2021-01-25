@@ -7,15 +7,12 @@ app.use(cors());
 
 app.listen(3000, () => console.log('Active on port 3000'));
 
-app.get('/api/location', async (request, response) => {
-  const locationData = await fetch('https://api.postcodes.io/postcodes/nw73ex')
-  // const locationResponse = locationData.json();
+app.get('/api/location/:postcode', async (request, response) => {
+// app.get('/api/location/', async (request, response) => {
+  console.log(request.params)
+  const postcode = request.params.postcode
+  const locationData = await fetch(`https://api.postcodes.io/postcodes/${postcode}`)
   const locationResponse = await locationData.json();
-  // const data = {
-  //   response: locationResponse
-  // }
-  // console.log(data)
   console.log("hello");
-  // console.log(response.json(locationResponse))
   response.json(locationResponse)
 });

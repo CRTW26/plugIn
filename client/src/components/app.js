@@ -10,7 +10,7 @@ class App extends Component {
     input: 'hello',
     lat: null,
     lng: null,
-    station: null
+    stations: null
   }
 
   inputHandler = (event) => {
@@ -21,12 +21,13 @@ class App extends Component {
     event.preventDefault();
     // console.log('submit event')
     // console.log(this.state.input)
-    this.getLatLong();
+    this.getLatLong(this.state.input);
     
   }
 
-  getLatLong() {
-    fetch('/api/location')
+  getLatLong(postcode) {
+    fetch(`/api/location/${postcode}`)
+    // fetch(`/api/location`)
     .then((response) => {
       console.log(response);
       return response.json();
@@ -36,18 +37,34 @@ class App extends Component {
       this.setState({lng: response.result.longitude})
       // console.log(response.result.latitude);
       // console.log(response.result.longitude);
-      this.getStationData(response.result.latitude, response.result.longitude);
+      // this.getStationData(response.result.latitude, response.result.longitude);
     });
   }
 
-  getStationData(lat, lng) {
-    fetch(`https://api.openchargemap.io/v3/poi/?output=json&countrycode=GB&maxresults=10&compact=true&verbose=false&latitude=${lat}&longitude=${lng}&distance=10&distanceunit=km&opendata=true`)
-    .then((response) => {
-      return response.json();
-    }).then((response) => {
-      console.log(response);
-      // this.setState({stations: response.stations})
-    });
+  // getStationData(lat, lng) {
+  //   fetch(`https://api.openchargemap.io/v3/poi/?output=json&countrycode=GB&maxresults=20&compact=true&verbose=false&latitude=${lat}&longitude=${lng}&distance=30&distanceunit=km&opendata=true`)
+  //   .then((response) => {
+  //     return response.json();
+  //   }).then((response) => {
+  //     console.log(response);
+  //     this.sortStationData(response);
+  //     // this.setState({stations: response.stations})
+  //   });
+  // }
+
+  sortStationData(response) {
+    console.log(response.length)
+    const results = [];
+    for (let i = 0; i < response.length; i ++) {
+      let station = {
+        name: response[i].AddressInfo.Title,
+        postcode: response[i].AddressInfo.Postcode,
+        latitude: response[i].AddressInfo.Latitude,
+        longitude: response[i].AddressInfo.Longitude
+      }  
+      results.push(station)
+    }
+    console.log(results);
   }
 
   render() {

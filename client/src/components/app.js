@@ -3,6 +3,8 @@ import { h, Component } from 'preact';
 import Header from './header';
 import Map from './Map';
 import UserInput from './UserInput';
+import ChargingStation from './ChargingStation';
+
 
 class App extends Component {
 
@@ -10,7 +12,8 @@ class App extends Component {
     input: 'hello',
     lat: null,
     lng: null,
-    stations: []
+    stations: [],
+    showStations: false
   }
 
   inputHandler = (event) => {
@@ -65,9 +68,25 @@ class App extends Component {
     }
     console.log(results);
     this.setState({stations: results})
+    this.setState({showStations: true})
+    console.log(this.state.showStations);
   }
 
   render() {
+
+    let stations = null;
+    if (this.state.showStations) {
+      stations = (
+        <div>
+          { this.state.stations.map(station => {
+            return <ChargingStation 
+            name={station.name}
+            postcode={station.postcode} />
+        })}
+        </div>
+      )
+    }
+
     return(
       <div>
         <Header />
@@ -78,11 +97,8 @@ class App extends Component {
         <Map />
         <UserInput 
           submitted={(event) => this.submitHandler(event)} 
-          inputChanged={(event) => this.inputHandler(event)}/>
-        <p>{this.state.input}</p>
-        <p>{this.state.lat}</p>
-        <p>{this.state.lng}</p>
-        <p>{this.state.stations[0]}</p>
+          inputChanged={(event) => this.inputHandler(event)} />
+          { stations }
       </div>
     );
   }

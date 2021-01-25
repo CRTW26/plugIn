@@ -13,7 +13,8 @@ class App extends Component {
     lat: null,
     lng: null,
     stations: [],
-    showStations: false
+    showStations: false,
+    showMarkers: false
   }
 
   inputHandler = (event) => {
@@ -69,6 +70,7 @@ class App extends Component {
     console.log(results);
     this.setState({stations: results})
     this.setState({showStations: true})
+    this.setState({showMarkers: true})
     console.log(this.state.showStations);
   }
 
@@ -87,14 +89,24 @@ class App extends Component {
       )
     }
 
+    let mapView = <Map lat={51.505} lng={-0.09} stations={null}/>;
+    if (this.state.showMarkers) {
+      console.log("Map view changed")
+      mapView = (
+        <Map 
+          lat={this.state.lat}
+          lng={this.state.lng} 
+          station={this.state.stations} />
+      )
+    }
+
     return(
       <div>
         <Header />
         <br />
         <br />
         <br />
-        <p>hello</p>
-        <Map />
+        { mapView }
         <UserInput 
           submitted={(event) => this.submitHandler(event)} 
           inputChanged={(event) => this.inputHandler(event)} />

@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     input: 'hello',
     lat: null,
-    lng: null
+    lng: null,
+    station: null
   }
 
   inputHandler = (event) => {
@@ -35,6 +36,17 @@ class App extends Component {
       this.setState({lng: response.result.longitude})
       // console.log(response.result.latitude);
       // console.log(response.result.longitude);
+      this.getStationData(response.result.latitude, response.result.longitude);
+    });
+  }
+
+  getStationData(lat, lng) {
+    fetch(`https://api.openchargemap.io/v3/poi/?output=json&countrycode=GB&maxresults=10&compact=true&verbose=false&latitude=${lat}&longitude=${lng}&distance=10&distanceunit=km&opendata=true`)
+    .then((response) => {
+      return response.json();
+    }).then((response) => {
+      console.log(response);
+      // this.setState({stations: response.stations})
     });
   }
 
@@ -53,6 +65,7 @@ class App extends Component {
         <p>{this.state.input}</p>
         <p>{this.state.lat}</p>
         <p>{this.state.lng}</p>
+        <p>{this.state.stations}</p>
       </div>
     );
   }

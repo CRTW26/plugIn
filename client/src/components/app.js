@@ -6,6 +6,7 @@ import ChargingStationMap from './ChargingStationMap';
 import UserInput from './UserInput';
 import ChargingStation from './ChargingStation';
 
+import classes from './app.css'; 
 
 class App extends Component {
 
@@ -109,14 +110,13 @@ class App extends Component {
     return(
       <div>
         <Header />
-        <br />
-        <br />
-        <br />
-        { mapView }
-        <UserInput 
-          submitted={(event) => this.submitHandler(event)} 
-          inputChanged={(event) => this.inputHandler(event)} />
+        <div className={classes.App}>
+          <UserInput 
+            submitted={(event) => this.submitHandler(event)} 
+            inputChanged={(event) => this.inputHandler(event)} />
           { stations }
+          { mapView }
+        </div>
       </div>
     );
   }

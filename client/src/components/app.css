@@ -1,0 +1,7 @@
+.App {
+  margin: 50px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+}

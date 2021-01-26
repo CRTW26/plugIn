@@ -1,5 +1,7 @@
 import { h } from 'preact';
 
+import classes from './ChargingStation.css';
+
 const chargingStation = (props) => (
   <div>
     <p>{props.name}</p>

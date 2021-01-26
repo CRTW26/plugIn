@@ -17,8 +17,6 @@ class App extends Component {
     stations: [],
     showStations: false,
     showMarkers: false,
-    startingLat: 51.505,
-    startingLng: -0.09
   }
 
   inputHandler = (event) => {
@@ -79,16 +77,20 @@ class App extends Component {
 
   render() {
 
-    let stations = null;
+    let stations = (
+      <UserInput 
+      submitted={(event) => this.submitHandler(event)} 
+      inputChanged={(event) => this.inputHandler(event)} />
+    );
     if (this.state.showStations) {
       stations = (
-        <div>
+        <ul>
           { this.state.stations.map(station => {
-            return <ChargingStation 
+            return <li><ChargingStation 
             name={station.name}
-            postcode={station.postcode} />
+            postcode={station.postcode} /></li>
         })}
-        </div>
+        </ul>
       )
     }
 
@@ -111,9 +113,6 @@ class App extends Component {
       <div>
         <Header />
         <div className={classes.App}>
-          <UserInput 
-            submitted={(event) => this.submitHandler(event)} 
-            inputChanged={(event) => this.inputHandler(event)} />
           { stations }
           { mapView }
         </div>

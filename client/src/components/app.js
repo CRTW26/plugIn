@@ -84,13 +84,16 @@ class App extends Component {
     );
     if (this.state.showStations) {
       stations = (
-        <ul>
-          { this.state.stations.map(station => {
-            return <li><ChargingStation 
-            name={station.name}
-            postcode={station.postcode} /></li>
-        })}
-        </ul>
+        <div>
+          <p className={classes.listTitle}>Charging points near you:</p>
+          <ul>
+            { this.state.stations.map(station => {
+              return <li><ChargingStation 
+              name={station.name}
+              postcode={station.postcode} /></li>
+          })}
+          </ul>
+        </div>
       )
     }
 

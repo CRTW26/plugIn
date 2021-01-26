@@ -6,7 +6,7 @@
 }
 
 ul {
-  height: 500px;
+  height: 400px;
   overflow:hidden; 
   overflow-y:scroll;
   list-style: none;
@@ -20,6 +20,11 @@ li {
 
 li:hover {
   background-color: #6fdd72;
+}
+
+.listTitle {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 @media (max-width: 650px) {

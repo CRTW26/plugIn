@@ -1,7 +1,8 @@
 import { h, Component } from 'preact';
 
 import Header from './header';
-import Map from './Map';
+import StartingMap from './Map';
+import ChargingStationMap from './ChargingStationMap';
 import UserInput from './UserInput';
 import ChargingStation from './ChargingStation';
 
@@ -14,7 +15,9 @@ class App extends Component {
     lng: null,
     stations: [],
     showStations: false,
-    showMarkers: false
+    showMarkers: false,
+    startingLat: 51.505,
+    startingLng: -0.09
   }
 
   inputHandler = (event) => {
@@ -71,7 +74,6 @@ class App extends Component {
     this.setState({stations: results})
     this.setState({showStations: true})
     this.setState({showMarkers: true})
-    console.log(this.state.showStations);
   }
 
   render() {
@@ -89,15 +91,19 @@ class App extends Component {
       )
     }
 
-    let mapView = <Map lat={51.505} lng={-0.09} stations={null}/>;
+    // let mapView = <Map lat={this.state.startingLat} lng={this.state.startingLng} stations={null}/>;
+    let mapView;
     if (this.state.showMarkers) {
       console.log("Map view changed")
       mapView = (
-        <Map 
+        <ChargingStationMap 
           lat={this.state.lat}
           lng={this.state.lng} 
           station={this.state.stations} />
       )
+    } else {
+      // mapView = null;
+      mapView = <StartingMap />;
     }
 
     return(

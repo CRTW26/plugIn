@@ -19,6 +19,10 @@ class App extends Component {
     showMarkers: false,
   }
 
+  refreshPage = () => {
+    window.location.reload(false);
+  }
+
   inputHandler = (event) => {
     this.setState({input: event.target.value})
   }

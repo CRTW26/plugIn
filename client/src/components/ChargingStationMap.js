@@ -31,7 +31,7 @@ const map = (props) => {
   return ( 
     <MapContainer
     center={position}
-    zoom={9}
+    zoom={12}
     style={{width: '70%', height: '500px'}}
     >
     <TileLayer 

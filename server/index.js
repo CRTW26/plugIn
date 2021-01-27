@@ -3,7 +3,11 @@ const app = express();
 const fetch = require('node-fetch');
 const cors = require('cors');
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:8080",
+  methods: "GET"
+}));
+
 
 app.listen(3000, () => console.log('Active on port 3000'));
 

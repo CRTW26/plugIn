@@ -29,15 +29,12 @@ class App extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    // console.log('submit event')
-    // console.log(this.state.input)
     this.getLatLong(this.state.input);
     
   }
 
   getLatLong(postcode) {
     fetch(`/api/location/${postcode}`)
-    // fetch(`/api/location`)
     .then((response) => {
       console.log(response);
       return response.json();
@@ -45,8 +42,6 @@ class App extends Component {
       console.log(response);
       this.setState({lat: response.result.latitude})
       this.setState({lng: response.result.longitude})
-      // console.log(response.result.latitude);
-      // console.log(response.result.longitude);
       this.getStationData(response.result.latitude, response.result.longitude);
     });
   }
@@ -73,7 +68,6 @@ class App extends Component {
       }  
       results.push(station)
     }
-    console.log(results);
     this.setState({stations: results})
     this.setState({showStations: true})
     this.setState({showMarkers: true})
@@ -101,7 +95,6 @@ class App extends Component {
       )
     }
 
-    // let mapView = <Map lat={this.state.startingLat} lng={this.state.startingLng} stations={null}/>;
     let mapView;
     if (this.state.showMarkers) {
       console.log("Map view changed")
@@ -112,7 +105,6 @@ class App extends Component {
           station={this.state.stations} />
       )
     } else {
-      // mapView = null;
       mapView = <StartingMap />;
     }
 

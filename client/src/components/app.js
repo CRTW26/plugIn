@@ -1,10 +1,10 @@
 import { h, Component } from 'preact';
 
 import Header from './header';
-import StartingMap from './Map';
-import ChargingStationMap from './ChargingStationMap';
-import UserInput from './UserInput';
-import ChargingStation from './ChargingStation';
+import StartingMap from './Maps/Map';
+import ChargingStationMap from './Maps/ChargingStationMap';
+import UserInput from './UserInput/UserInput';
+import ChargingStation from './ChargingStations/ChargingStation';
 
 import classes from './app.css'; 
 

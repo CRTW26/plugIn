@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import UserInput from '../src/components/UserInput/UserInput';
+import UserInput from '../../src/components/UserInput/UserInput';
 // See: https://github.com/preactjs/enzyme-adapter-preact-pure
 import { shallow } from 'enzyme';
 

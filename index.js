@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Active on ${PORT}`));
 
 app.get('/api/location/:postcode', async (request, response) => {
-  console.log(request.params)
   const postcode = request.params.postcode
   const locationData = await fetch(`https://api.postcodes.io/postcodes/${postcode}`)
   const locationResponse = await locationData.json();

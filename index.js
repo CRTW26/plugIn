@@ -5,7 +5,7 @@ const app = express();
 const fetch = require('node-fetch');
 const cors = require('cors');
 
-app.use(express.static('./client/build'));
+app.use(express.static('client/build'));
 
 app.use(cors({
   origin: "http://localhost:8080",

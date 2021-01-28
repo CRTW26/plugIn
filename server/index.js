@@ -5,14 +5,15 @@ const app = express();
 const fetch = require('node-fetch');
 const cors = require('cors');
 
-
+app.use(express.static('../client/build'));
 app.use(cors({
   origin: "http://localhost:8080",
   methods: "GET"
 }));
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => console.log('Active on port 3000'));
+app.listen(PORT, () => console.log(`Active on ${PORT}`));
 
 app.get('/api/location/:postcode', async (request, response) => {
   console.log(request.params)

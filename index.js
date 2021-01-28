@@ -21,7 +21,6 @@ app.get('/api/location/:postcode', async (request, response) => {
   const postcode = request.params.postcode
   const locationData = await fetch(`https://api.postcodes.io/postcodes/${postcode}`)
   const locationResponse = await locationData.json();
-  console.log("hello");
   response.json(locationResponse)
 });
 

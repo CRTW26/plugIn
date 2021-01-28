@@ -32,10 +32,8 @@ class App extends Component {
   getLatLong(postcode) {
     fetch(`/api/location/${postcode}`)
     .then((response) => {
-      console.log(response);
       return response.json();
     }).then((response) => {
-      console.log(response);
       this.setState({lat: response.result.latitude})
       this.setState({lng: response.result.longitude})
       this.getStationData(response.result.latitude, response.result.longitude);
@@ -47,7 +45,6 @@ class App extends Component {
     .then((response) => {
       return response.json();
     }).then((response) => {
-      console.log(response);
       this.sortStationData(response);
     });
   }

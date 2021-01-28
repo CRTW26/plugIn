@@ -7,10 +7,10 @@ const cors = require('cors');
 
 app.use(express.static('client/build'));
 
-app.use(cors({
-  origin: "http://localhost:8080",
-  methods: "GET"
-}));
+// app.use(cors({
+//   origin: "http://localhost:8080",
+//   methods: "GET"
+// }));
 
 const PORT = process.env.PORT || 3000;
 

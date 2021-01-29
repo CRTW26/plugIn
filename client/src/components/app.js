@@ -50,7 +50,6 @@ class App extends Component {
   }
 
   sortStationData(response) {
-    console.log(response.length)
     const results = [];
     for (let i = 0; i < response.length; i ++) {
       let station = {
@@ -90,7 +89,6 @@ class App extends Component {
 
     let mapView;
     if (this.state.showMarkers) {
-      console.log("Map view changed")
       mapView = (
         <ChargingStationMap 
           lat={this.state.lat}

@@ -22,7 +22,9 @@ const map = (props) => {
    let markers = (
       stations.map(station => {
       return <Marker position={[station.latitude,station.longitude]}>
-                <Popup>{station.name}</Popup>
+                <Popup>
+                    {station.name} - {station.postcode}
+                </Popup>
               </Marker>
     })
   )

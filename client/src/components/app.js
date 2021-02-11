@@ -37,6 +37,8 @@ class App extends Component {
       this.setState({lat: response.result.latitude})
       this.setState({lng: response.result.longitude})
       this.getStationData(response.result.latitude, response.result.longitude);
+    }).catch((error) => {
+        console.log(error);
     });
   }
 
@@ -46,6 +48,8 @@ class App extends Component {
       return response.json();
     }).then((response) => {
       this.sortStationData(response);
+    }).catch((error) => {
+        console.log(error);
     });
   }
 

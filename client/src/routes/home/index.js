@@ -78,7 +78,7 @@ class Home extends Component {
       if (this.state.showStations) {
         stations = (
           <div>
-            <p className={classes.listTitle}>Charging points near you:</p>
+            <p id='stationList' className={classes.listTitle} >Charging points near you:</p>
             <ul>
               { this.state.stations.map(station => {
                 return <li><ChargingStation 

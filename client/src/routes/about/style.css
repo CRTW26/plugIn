@@ -3,4 +3,7 @@
     padding: 70px;
     margin: auto;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }

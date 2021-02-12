@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(express.static('client/build/'));
 
 app.use(cors({
-  origin: "https://plug-in-app.herokuapp.com/",
+  origin: process.env.URL,
   methods: "GET"
 }));
 

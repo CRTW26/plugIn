@@ -22,7 +22,6 @@ const About = () => (
         <br />
         <br />
         <h2>Find out more: </h2>
-        <a href="https://github.com/CRTW26" target="blank"><p>My GitHub</p></a>
         <a href="https://postcodes.io/" target="blank"><p>Postcodes API</p></a>
         <a href="https://openchargemap.org/site/develop/api" target="blank"><p>Opencharge API</p></a>
 	</div>

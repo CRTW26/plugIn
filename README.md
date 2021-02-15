@@ -25,7 +25,7 @@ npm run test
 | -------------|:-------------:|
 | Language     | Javascript |
 | Frameworks   | Preact, NodeJS|
-| Testing      | Jest, Puppeteer      |           
+| Testing      | Jest, Puppeteer, Enzyme      |           
 | External API's | OpenCharge, Postcodes|      
 | Mapping | Leaflet|   
 
